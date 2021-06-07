@@ -36,7 +36,7 @@ Revise the program to ensure that inputs are entered as numeric values.
 Don’t allow the user to proceed if the value entered is not numeric.
 Break the program into functions that perform the computations.
 Implement this program as a GUI program that automatically updates the values when any value changes.
-Modify the program so it also supports the Kelvin scale.
+Modify the program so it also supports the Kelvin inale.
 */
 
 import java.util.Scanner;
@@ -44,41 +44,26 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
 
-        int fahrenheit, celsius, fahrenheitToCelsius, celsiusToFahrenheit;
+        double fahrenheit, celsius, fahrenheitToCelsius, celsiusToFahrenheit;
 
         Scanner in = new Scanner(System.in);
         System.out.print("Press C to convert from Fahrenheit to Celsius.\nPress F to convert from Celsius to Fahrenheit.\nYour choice: ");
         String tempScale = in.nextLine();
 
-        Scanner sc = new Scanner(System.in);
-
-        // C = (F − 32) × 5 / 9
-
-        fahrenheitToCelsius = (fahrenheit - 32) * 5 / 9;
-
-        // F = (C × 9 / 5) + 32
-
-        celsiusToFahrenheit = (celsius * 9 / 5) + 32;
-
-        if(tempScale.equals("C")){
+        if(tempScale.equals("C") || tempScale.equals("c")){
             System.out.print("Please enter the temperature in Fahrenheit: ");
-            fahrenheit = sc.nextInt();
+            fahrenheit = in.nextDouble();
+            // C = (F − 32) × 5 / 9
+            fahrenheitToCelsius = (fahrenheit - 32) * 5 / 9;
             System.out.println("The temperature in Celsius is " + fahrenheitToCelsius + ".");
         }
-        else if(tempScale.equals("c")){
-            System.out.print("Please enter the temperature in Fahrenheit: ");
-            fahrenheit = sc.nextInt();
-            System.out.println("The temperature in Celsius is " + fahrenheitToCelsius + ".");
-        }
-        if(tempScale.equals("F")){
+        else if(tempScale.equals("F") || tempScale.equals("f")){
             System.out.print("Please enter the temperature in Celsius: ");
-            celsius = sc.nextInt();
-            System.out.println("The temperature in Fahrenheit is " + celsiusToFahrenheit + ".");
-        }
-        else if(tempScale.equals("f")){
-            System.out.print("Please enter the temperature in Celsius: ");
-            celsius = sc.nextInt();
+            celsius = in.nextDouble();
+            // F = (C × 9 / 5) + 32
+            celsiusToFahrenheit = (celsius * 9 / 5) + 32;
             System.out.println("The temperature in Fahrenheit is " + celsiusToFahrenheit + ".");
         }
     }
 }
+
